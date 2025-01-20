@@ -1,0 +1,23 @@
+Põhioperatsioonid:
+
+astendamine **
+korrutamine *
+jagamine /
+jagamisjäär %
+liitmine +
+lahutamine -
+jagamise täisarvulise osa leidmine //
+
+Tehted tekstidega:
+
+tekstide liitmine +
+teksti kordamine *
+
+Võrdlusoperatsioonid:
+
+võrdlus ==
+ei võrdu !=
+väiksem <
+suurem >
+väiksem või võrdne <=
+suurem või võrdne >=

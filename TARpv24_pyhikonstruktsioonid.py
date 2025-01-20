@@ -8,7 +8,7 @@ class Program:
 
     def run(self, pId):
         #t = type(Program)
-     
+        methods = getMethods()
 
         if (pId == 0):
             self.runHello()
@@ -41,14 +41,9 @@ class Program:
 
         print(a, " / ", divider, " = ", a/divider, "\n")
 
-for method in getMethods():
-    print(method)
-
 print("0 - Hello World")
 print("1 - Basic Operations")
     
 pId = int(input("Select program: "))
 prog = Program()
 prog.run(pId)
-
-print("hi")
