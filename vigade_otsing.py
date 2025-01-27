@@ -5,6 +5,9 @@ while True:
     a=input('Sisesta ruudu külje pikkus => ')
     try:
         a = float(a)
+        if (a <= 0):
+            print("Pikkus peab olema suurem kui 0")
+            continue
         break
     except:
         print("Palun sisesta õige number")
@@ -26,6 +29,9 @@ while True:
     try:
         b = float(b)
         c = float(c)
+        if (b <= 0 or c <= 0):
+            print("Pikkus peab olema suurem kui 0")
+            continue
         break
     except:
         print("Palun sisesta õige number")
@@ -46,6 +52,9 @@ print("Ringi karakteristikud")
 while True:
     r=input("Sisesta ringi raadiusi pikkus => ")
     try:
+        if (r <= 0):
+            print("Raadius peab olema suurem kui 0")
+            continue
         r = float(r)
         break
     except:
