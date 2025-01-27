@@ -2,6 +2,7 @@ from datetime import *
 import calendar
 import random
 import math
+import time
 
 tana = date.today()
 print(f"Täna on {tana}")
@@ -55,3 +56,79 @@ print(f"Ruudu pindala on {round((2 * r)**2, 2)}")
 print(f"Ruudu ümbermõõt on {round(8 * r, 2)}")
 print(f"Ringi pindala on {round(math.pi * r**2, 2)}")
 print(f"Ringi ümbermõõt on {round(2*math.pi*r, 2)}")
+
+# Ülesanne 4
+mundiD = 2.575
+maaR = 6378 * 100_000
+Pmaa = 2 * math.pi * maaR
+kogus = Pmaa / mundiD
+print(f"Meil on vaja {int(kogus):,d} mündi.")
+print(f"Meil on vaja {int(kogus * 2):,d} euro.")
+
+# Ülesanne 5
+a="kill-koll ".capitalize()
+b="killadi-koll ".capitalize()
+print(a*2,b,a*2,b,a*4)
+
+# Ülesanne 6
+luuletus = '''Rong see sõitis tsuhh tsuhh tsuhh,
+piilupart oli rongijuht.
+Rattad tegid rat tat taa,
+rat tat taa ja tat tat taa.
+Aga seal rongi peal,
+kas sa tead, kes olid seal?
+
+Rong see sõitis tuut tuut tuut,
+piilupart oli rongijuht.
+Rattad tegid kill koll koll,
+kill koll koll ja kill koll kill.'''
+
+for i in luuletus.split(",\n"):
+    print(i.capitalize())
+
+# Ülesanne 7
+while True:
+    try:
+        print("\nRistküliku pikkused")
+        a = float(input("a: "))
+        b = float(input("b: "))
+        print("Ümbermõõdu on ", (a + b) * 2)
+        print("Pindala on ", (a * b))
+        break
+    except:
+        print("Palun sisenda õiged andmed")
+
+# Ülesanne 8
+while True:
+    try:
+        print("\nKütusekulu arvutamine")
+        a = float(input("Tangitud kütuse liitrid: "))
+        b = float(input("Läbitud kilomeetrid: "))
+        print("Keskmine kütusekulu 100km kohta on", round(a / b * 100, 2), "liitrid")
+        break
+    except:
+        print("Palun sisenda õiged andmed")
+
+# Ülesanne 9
+while True:
+    try:
+        print("\nRulluisutajad")
+        kiirus = 29.9
+        m = float(input("Minutid: "))
+        print("Keskmine rulluisutaja läbib", round(m / 60 * kiirus, 2), "km", m, "minutiga")
+        break
+    except:
+        print("Palun sisenda õiged andmed")
+
+
+# Ülesanne 10
+while True:
+    try:
+        print("\nAjateisendus")
+        m = int(input("Aeg minutites: "))
+        tund = int(m/60)
+        minutit = m % 60
+        print(f"Aeg on {tund}:{minutit}")
+        break
+    except:
+        print("Palun sisenda õiged andmed")
