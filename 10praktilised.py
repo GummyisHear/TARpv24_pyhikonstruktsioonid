@@ -1,12 +1,32 @@
 import random
 import math
 
+def inputFloat(message, errorMessage):
+    while True:
+        try:
+            i = float(input(message))
+            return i
+        except:
+            print(errorMessage)
+            continue
+    return 0
+
+def inputInt(message, errorMessage):
+    while True:
+        try:
+            i = int(input(message))
+            return i
+        except:
+            print(errorMessage)
+            continue
+    return 0
+
 # 1.
 print("Ülesanne 1.")
 tais = 0
 print("Sisesta 15 arved!")
 for i in range(0,15):
-    arv = input(f"{i+1} => ")
+    arv = inputFloat(f"{i+1} => ", "Sisesta reaal arv!")
     try:
         a = int(arv)
         tais += 1
@@ -18,7 +38,7 @@ print()
 
 # 2.
 print("Ülesanne 2.")
-a = int(input("Sisesta täisarv A: "))
+a = inputInt("Sisesta täisarv A: ", "Sisesta täisarv!")
 summ = 0
 for i in range(0, a):
     summ += i
@@ -31,7 +51,7 @@ print("Ülesanne 3.")
 print("Sisesta 8 arved!")
 kord = 1
 for i in range(1, 9):
-    arv = float(input("=> "))
+    arv = inputFloat("=> ", "Sisesta reaal arv!")
     if (arv > 0):
         kord *= arv
 
@@ -48,7 +68,7 @@ print()
 # 5.
 print("Ülesanne 5.")
 print("Summ negatiivse arvedest")
-N = int(input("Kui palju arved tahad sisestada: "))
+N = inputInt("Kui palju arved tahad sisestada: ", "Sisesta täis arv!")
 summ = 0
 
 for i in range(N):
@@ -61,13 +81,13 @@ print()
 
 # 6.
 print("Ülesanne 6.")
-N = int(input("Kui palju arved tahad sisestada: "))
+N = inputInt("Kui palju arved tahad sisestada: ", "Sisesta täis arv!")
 neg = 0
 pos = 0
 nul = 0
 
 for i in range(N):
-    arv = int(input(f"Sisesta arv: "))
+    arv = inputInt("Sisesta arv: ", "Sisesta täis arv!")
     if arv < 0:
         neg += 1
     elif arv > 0:
@@ -80,9 +100,9 @@ print()
 
 # 7.
 print("Ülesanne 7.")
-A = int(input("Sisesta vahemiku algus A: "))
-B = int(input("Sisesta vahemiku lõpp B: "))
-K = int(input("Sisesta arv K: "))
+A = inputInt("Sisesta vahemiku algus A: ", "Sisesta täis arv!")
+B = inputInt("Sisesta vahemiku lõpp B: ", "Sisesta täis arv!")
+K = inputInt("Sisesta arv K: ", "Sisesta täis arv!")
 
 print(f"Arved, mis on jagatavad {K} vahemikus:")
 for num in range(A, B + 1):
@@ -110,8 +130,8 @@ print()
 # 10.
 print("Ülesanne 10.")
 for i in range(10):
-    a = int(input("Sisesta esimene arv: "))
-    b = int(input("Sisesta teine arv: "))
+    a = inputInt("Sisesta esimene arv: ", "Sisesta täis arv!")
+    b = inputInt("Sisesta teine arv: ", "Sisesta täis arv!")
     if (a > b): print(f"{a} on suurem kui {b}")
     elif (a < b): print(f"{b} on suurem kui {a}")
     else: print(f"Numbrid on võrdsed")
@@ -169,11 +189,11 @@ rS = r ** 2
 a = random.randint(-10, 10)
 b = random.randint(-10, 10)
 print(f"Ring raadiusega {r}, koordinaatides ({a},{b})")
-n = int(input("Kui palju puktid tahad sisestada: "))
+n = inputInt("Kui palju puktid tahad sisestada: ", "Sisesta täis arv!")
 c = 0
 for i in range(n):
-    x = int(input("Sisesta x: "))
-    y = int(input("Sisesta y: "))
+    x = inputInt("Sisesta x: ", "Sisesta täis arv!")
+    y = inputInt("Sisesta y: ", "Sisesta täis arv!")
     dx = x - a
     dy = y - b
     if (dx ** 2 + dy ** 2 <= rS):
@@ -192,7 +212,7 @@ arv = random.randint(1, 10)
 katsed = 0
 print("Arvake arv vahemikus 1-10")
 while True:
-    a = int(input("Arvake: "))
+    a = inputInt("Arvake: ", "Sisesta täis arv!")
     if (a == arv): break
     katsed += 1
 
