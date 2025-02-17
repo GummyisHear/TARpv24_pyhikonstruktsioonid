@@ -1,3 +1,4 @@
+from datetime import date
 from random import *
 
 #Näidis 1
@@ -92,7 +93,6 @@ if (temp > 18):
 else:
     print("Ei ole soovitav")
 
-
 # Ülesanne 6 Pikkus
 print("\nÜlesanne 6")
 
@@ -113,7 +113,6 @@ if (sugu.lower() == "mees"):
 elif (sugu.lower() == "naine"):
     print(f"Sa oled {'suur' if pikkus > 170 else 'keskmise pikkusega' if pikkus > 150 else 'väike'} naine")
 
-
 # Ülesanne 8 Poes
 print("\nÜlesanne 8")
 
@@ -125,7 +124,7 @@ if (input("Soovid saia osta? (y/n) ") == "y"):
 if (input("Soovid leiva osta? (y/n) ") == "y"):
     tsekk += 0.6 * int(input("Kui palju: "))
 
-print("Sinu tšekk on " + str(tsekk) + " eurot")
+# print("Sinu tšekk on " + str(tsekk) + " eurot")
 
 # Ülesanne 9 Ruut
 print("\nÜlesanne 9")
@@ -153,3 +152,44 @@ elif (op == "*"):
     print(f"Vastus on {a * b}")
 elif (op == "/"):
     print(f"Vastus on {a / b}")
+
+# 11. Juubel
+print("\n11. Sisesta oma sünnipaev")
+d = int(input("Päev: "))
+m = int(input("Kuu: "))
+y = int(input("Aasta: "))
+if ((date.today().year - y) % 10 == 0):
+    print("Sul on juubel!")
+else:
+    print("Sul ei ole juubel.")
+
+# 12. Müük
+print("\n12. Müük")
+p = float(input("Siesta toode hind: "))
+if (p < 10):
+    print("Saad 10% allahindlus!")
+    print(f"Lõpp hind: {p * 0.9}")
+else:
+    print("Saad 20% allahindlus!")
+    print(f"Lõpp hind: {p * 0.8}")
+
+# 13. Jalgpalli meeskond
+print ("\n13. jalgpalli meeskond")
+sugu = input("sisesta oma sugu (m/n): ")
+if (sugu.lower() == "m"):
+    vanus = int(input("kui vana sa oled: "))
+    if (vanus >= 16 and vanus <= 18):
+        print("sina sobib!")
+    else:
+        print("sina ei sobi.")
+elif (sugu.lower() == "n"):
+    print("sina sobib!")
+else:
+    print("vale sugu.")
+
+# 14. Busside logistika
+print("\n14. Busside logistika")
+i = int(input("Kui palju inimesed on: "))
+b = int(input("Kui palju inimesed mahub bussile: "))
+print(f"Et transportida kõik inimesed meil on vaja {i // b} täis bussid, ja 1 buss kus on {i % b} inimesed.")
+
