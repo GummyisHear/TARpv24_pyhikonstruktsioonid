@@ -109,9 +109,9 @@ print("\nÜlesanne 7")
 pikkus = int(input("Sisesta oma pikkus: "))
 sugu = input("Sisesta oma sugu (mees/naine): ")
 if (sugu.lower() == "mees"):
-    print(f"Sa oled {"suur" if pikkus > 180 else "keskmise pikkusega" if pikkus > 160 else "väike"} mees")
+    print(f"Sa oled {'suur' if pikkus > 180 else 'keskmise pikkusega' if pikkus > 160 else 'väike'} mees")
 elif (sugu.lower() == "naine"):
-    print(f"Sa oled {"suur" if pikkus > 170 else "keskmise pikkusega" if pikkus > 150 else "väike"} naine")
+    print(f"Sa oled {'suur' if pikkus > 170 else 'keskmise pikkusega' if pikkus > 150 else 'väike'} naine")
 
 
 # Ülesanne 8 Poes
