@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>10praktilised.py</StartupFile>
+    <StartupFile>collatz.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,8 +22,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="10praktilised.py" />
+    <Compile Include="collatz.py" />
     <Compile Include="donut.py" />
     <Compile Include="harjutused1.py" />
+    <Compile Include="KehaIndeks.py" />
+    <Compile Include="matemaatika.py" />
     <Compile Include="TARpv24_pyhikonstruktsioonid.py" />
     <Compile Include="tund2.py" />
     <Compile Include="tund3.py" />

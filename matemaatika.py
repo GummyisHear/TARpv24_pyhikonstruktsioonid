@@ -4,23 +4,35 @@ import random
 while True:
     try:
         raskus = int(input("Valige raskus (1 - Kerge, 2 - Keskmine, 3 - Raske): "))
+        if (not(raskus in [1, 2, 3])):
+            print("Valige raskus 1-3!")
+            continue
+
         kusimused = int(input("Kui palju küsimused tahad: "))
         break
     except:
         print("Sisesta täisarved!")
 
-if (raskus <= 1):
+if (raskus == 1):
     tehed = ["+", "-"]
 elif (raskus == 2):
     tehed = ["+", "-", "*"]
 else:
-    tehed = ["+", "-", "*", "/"]
+    tehed = ["*", "%", "//"]
 
 oigedVastused = 0
 i = 0
 for i in range(0, kusimused):
-    a = random.randint(5 ** raskus, 10 ** raskus)
-    b = random.randint(2 ** raskus, 12 ** raskus)
+    if (raskus == 1):
+        a = random.randint(3, 10)
+        b = random.randint(2, 10)
+    elif (raskus == 2):
+        a = random.randint(9, 30)
+        b = random.randint(6, 25)
+    else:
+        a = random.randint(40, 90)
+        b = random.randint(10, 30)
+
     tegevus = random.choice(tehed)
     if (tegevus == "+"):
         vastus = a + b
@@ -31,9 +43,12 @@ for i in range(0, kusimused):
     elif (tegevus == "*"):
         vastus = a * b
         print(f"{i+1}.   {a} * {b} = ?")
+    elif (tegevus == "//"):
+        vastus = a // b
+        print(f"{i+1}.   {a} // {b} = ?")
     else:
-        vastus = int(a / b)
-        print(f"{i+1}.   {a} / {b} = ? (floor)")
+        vastus = b % a
+        print(f"{i+1}.   {b} % {a} = ?")
 
     while True:
         try: 
