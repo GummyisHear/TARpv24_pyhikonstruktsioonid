@@ -47,11 +47,11 @@ else:
 
     while c != 1:
         if c % 2 == 0: # = -> ==
-            print(c, " - paaris arv. jagame 2.")
+            print(f"{c:>4}", " - paaris arv. jagame 2.")
             c = int(c / 2) # oli liiga palju Tab'e, == -> =
         else:
-            print(c, " - paaritu arv. korrutame 3, liidame 1 ja jagame 2.")
+            print(f"{c:>4}", " - paaritu arv. korrutame 3, liidame 1 ja jagame 2.")
             c = int((3*c + 1) / 2)
         #print(c) # end=" oli kinnitamata, == -> =, seda printi ei kasuta sest ei ole vaja
 
-    print(c, " - Teoreem on tõestatud") # '' -> ", lisan arv c printimine
+    print(f"{c:>4}", " - Teoreem on tõestatud") # '' -> ", lisan arv c printimine
