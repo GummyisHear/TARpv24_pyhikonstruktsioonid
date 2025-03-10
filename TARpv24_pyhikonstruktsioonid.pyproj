@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tund5.py</StartupFile>
+    <StartupFile>sone_funktsioonid.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,6 +29,7 @@
     <Compile Include="kordused_kt.py" />
     <Compile Include="matemaatika.py" />
     <Compile Include="plokkskeemid.py" />
+    <Compile Include="sone_funktsioonid.py" />
     <Compile Include="TARpv24_pyhikonstruktsioonid.py" />
     <Compile Include="tund2.py" />
     <Compile Include="tund3.py" />
