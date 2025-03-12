@@ -4,10 +4,8 @@ kasutajaNimi = input("Sisesta oma nimi: ")
 arvutiNimi = "Arvuti"
 valikuid = ["kivi", "paber", "käärid"]
 
-tulemused = {
-    kasutajaNimi: 0,
-    arvutiNimi: 0
-    }
+kasutajaTulemus = 0
+arvutiTulemus = 0
 
 print("Mängime Kivi-Paber-Käärid 5 korda!")
 
@@ -34,17 +32,22 @@ for i in range(5):
 
     if kasutajaValik == arvutiValik:
         print("Viik!")
-        tulemused[kasutajaNimi] += 1
-        tulemused[arvutiNimi] += 1
+        kasutajaTulemus += 1
+        arvutiTulemus += 1
     elif (kasutajaValik == (arvutiValik - 1) % 3):
         print("Kaotasid!")
-        tulemused[arvutiNimi] += 1
+        arvutiTulemus += 1
     else:
         print("Võitsid!")
-        tulemused[kasutajaNimi] += 1
+        kasutajaTulemus += 1
     print()
 
 print("\n=== Mäng läbi!!! ===")
 print("Tulemused:")
-for nimi, tulemus in tulemused.items():
-    print(f"{nimi}: {tulemus}")
+print(f"{kasutajaNimi}: {kasutajaTulemus} võitu")
+print(f"{arvutiNimi}: {arvutiTulemus} võitu")
+
+if (kasutajaTulemus > arvutiTulemus):
+    print("SINA VÕITSID!!!")
+else:
+    print("Sina kaotasid...")
