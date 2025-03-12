@@ -20,11 +20,14 @@ for i in range(5):
         except:
             print("Vali number 1, 2 või 3!")
 
+    # Kasutaja valik muutub indeksiks
     kasutajaValik = kasutajaValik - 1
 
+    # 80% tõenäosusega arvuti valib juhuslikult
     if (random.random() < 0.8):
         arvutiValik = random.randint(0, 2)
     else:
+        # Valime et võidab arvuti. Järgmine valik järjes alati võidab eelmist
         arvutiValik = (kasutajaValik + 1) % 3
 
     print(f"{kasutajaNimi} valis: {valikuid[kasutajaValik]}")
