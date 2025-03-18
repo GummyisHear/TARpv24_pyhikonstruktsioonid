@@ -24,7 +24,7 @@ def inputFixedLengthGuess(length, message):
 
 def drawGame():
     os.system("cls")
-    print("Eesti Wordle!".center(18))
+    print("=== Eesti Wordle!")
     length = len(vastus)
     arr = [ (Fore.CYAN + " - ") * length ]
 
