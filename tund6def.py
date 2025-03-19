@@ -1,6 +1,36 @@
 from MoodulTund6Def import *
 
-# squaer_list funktsiooni kasutamine
+# xorCipher funktsiooni kasutamine
+s = input("Sisesta sõna: ")
+k = input("Sisesta võti: ")
+v = xorCipher(s, k)
+print(v)
+
+v = xorCipher(v, k)
+print(v)
+
+# is_prime funktsiooni kasutamine
+
+a = int(input("Sisesta arv: "))
+v = is_prime(a)
+if (v == True):
+    print(f"{a} Arv on algarv!")
+else:
+    pass
+    #print(f"{i} Arv ei ole algarv!")
+
+# bank funktsiooni kasutamine
+a = float(input("Sisesta summa: "))
+aastad = int(input("Sisesta aastate arv: "))
+summa = bank(a, aastad)
+print(summa)
+
+# season funktsiooni kasutamine
+k = int(input("Sisesta kuu number: "))
+v = season(k)
+print(v)
+
+# square_list funktsiooni kasutamine
 sList = square_list(float(input("Sisesta ruudu külg: ")))
 for x in sList:
     print(x)
