@@ -9,6 +9,13 @@ print(v)
 v = xorCipher(v, k)
 print(v)
 
+# date funktsiooni kasutamine
+d = int(input("Sisesta päev: "))
+m = int(input("Sisesta kuu: "))
+a = int(input("Sisesta aasta: "))
+v = date(d, m, a)
+print("Kuupäev on õige!" if v == True else "Kuupäev on vale!")
+
 # is_prime funktsiooni kasutamine
 
 a = int(input("Sisesta arv: "))

@@ -120,6 +120,32 @@ def is_prime(a:int)->bool:
 
     return True
 
+# (7)
+def date(day:int, month:int, year:int)->bool:
+    """Kuupäeva kontrollimine
+    Tagastab True, kui kuupäev on õige ja False kui kuupäev on vale.
+    :param int day: Sisend kasutajalt, päeva number
+    :param int month: Sisend kasutajalt, kuu number
+    :param int year: Sisend kasutajalt, aasta number
+    :rtype: bool tagastab tõeväärtuses formaadis tulemus
+    """
+    if (day > 31 or day < 1 or month > 12 or month < 1 or year < 1):
+        return False
+
+    if month in [1, 3, 5, 7, 8, 10, 12] and day > 0 and day < 32:
+        return True
+
+    if month in [4, 6, 9, 11] and day > 0 and day < 31:
+        return True
+
+    if month == 2:
+        if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) and day > 0 and day < 30:
+            return True
+        if day > 0 and day < 28:
+            return True
+
+    return False
+
 # (8)
 def xorCipher(word:str, key:str)->str:
     """XOR krüpteerimine
