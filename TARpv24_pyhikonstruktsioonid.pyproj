@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>register.py</StartupFile>
+    <StartupFile>arvestustoo.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,6 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="10praktilised.py" />
+    <Compile Include="arvestustoo.py" />
     <Compile Include="collatz.py" />
     <Compile Include="donut.py" />
     <Compile Include="harjutused1.py" />
