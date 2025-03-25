@@ -48,6 +48,7 @@ while True:
         nimed.pop(index)
         kasv.pop(index)
         print("Inimene kustutatud!")
+        continue
 
     if (valik == 2):
         alphabet = sorted(nimed)
@@ -69,6 +70,7 @@ while True:
 
         print("Kõige pikem inimene: " + nimed[pikkIndeks] + " - " + str(kasv[pikkIndeks]))
         print("Kõige lühem inimene: " + nimed[luheIndeks] + " - " + str(kasv[luheIndeks]))
+        continue
 
     if (valik == 4):
         print("Sisesta inimese nimed! Ei sisesta midagi kui tahad lõpetada!")
@@ -91,11 +93,13 @@ while True:
             arv += 1
         
         print(f"Keskmine kasv on: {sum / arv}")
+        continue
 
     if (valik == 5):
         nimi = nimiInput("Sisesta nimi: ")
         index = nimed.index(nimi)
         kasv[index] = intInput("Sisesta uus pikkus: ")
         print("Pikkus muudetud!")
+        continue
 
 
