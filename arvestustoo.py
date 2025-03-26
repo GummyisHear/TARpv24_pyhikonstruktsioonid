@@ -3,7 +3,11 @@
 nimed = []
 kasv = []
 
-def intInput(text:str):
+def intInput(text:str)->int:
+    """Küsib kasutajat sisestama täisarvu
+    :param str text: Tekst mis väljastatakse kasutajale
+    :rtype: Sisestatud kasutajalt täisarv
+    """
     while True:
         try:
             return int(input(text))
@@ -11,6 +15,10 @@ def intInput(text:str):
             print("Sisesta täisarv!")
 
 def nimiInput(text:str):
+    """Küsib kasutajat sisestama kasutaja nimi
+    :param str text: Tekst mis väljastatakse kasutajale
+    :rtype: Sisestatud nimi, mis on olemas nimede listis
+    """
     while True:
         nimi = input(text)
         if nimi in nimed:
@@ -18,7 +26,9 @@ def nimiInput(text:str):
         else:
             print("Inimene ei leitud!")
 
-def inimesed():
+def inimesed()->any:
+    """Küsib kasutajat sisestama mitu uued kasutajat ja lisab nad nimede listi
+    """
     arv = intInput("Mitu inimesed tahad lisada: ")
     for i in range(arv):
         nimed.append(input("Sisesta inimese nimi: "))
@@ -44,10 +54,11 @@ while True:
 
     if (valik == 1):
         nimi = nimiInput("Sisesta nimi: ")
-        index = nimed.index(nimi)
-        nimed.pop(index)
-        kasv.pop(index)
-        print("Inimene kustutatud!")
+        while (nimi in nimed):
+            index = nimed.index(nimi)
+            nimed.pop(index)
+            kasv.pop(index)
+        print("Inimesed kustutatud!")
         continue
 
     if (valik == 2):
