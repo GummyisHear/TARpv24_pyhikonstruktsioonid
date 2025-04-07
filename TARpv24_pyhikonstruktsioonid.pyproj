@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>wordle.py</StartupFile>
+    <StartupFile>palgad.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,6 +33,8 @@
     <Compile Include="kordused_kt.py" />
     <Compile Include="matemaatika.py" />
     <Compile Include="ModuleRegister.py" />
+    <Compile Include="palgad.py" />
+    <Compile Include="palgadModule.py" />
     <Compile Include="plokkskeemid.py" />
     <Compile Include="register.py" />
     <Compile Include="sone_funktsioonid.py" />
