@@ -26,6 +26,8 @@ while True:
         calculateTax()
     if (choiceName == PALGA_OTSING):
         palgaOtsing()
+    if (choiceName == TAHT_OTSING):
+        findByLetter()
 
 
     print()

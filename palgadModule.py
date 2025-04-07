@@ -13,6 +13,7 @@ SORTEERI = "Sorteeri palka järgi"
 SARNASED = "Leia sarnased palgad"
 MAKSE = "Maksud"
 PALGA_OTSING = "Palga otsing"
+TAHT_OTSING = "Täht otsing"
 
 menu = [
     LISA_INIMENE,
@@ -22,7 +23,8 @@ menu = [
     SORTEERI,
     SARNASED,
     MAKSE,
-    PALGA_OTSING
+    PALGA_OTSING,
+    TAHT_OTSING
     ]
 
 palgad = [ 1200, 2500, 750, 395, 1200 ]
@@ -214,9 +216,18 @@ def palgaOtsing()->any:
     else:
         print("Palk ei leitud")
 
-def aaa():
+def findByLetter():
     # Найти имена начинающиеся на введенную букву и их зарплаты. Отобразить данные в столбик (Имя-зарплата)
-    ...
+    while True:
+        letter = input("Sisesta täht: ")
+        if (len(letter) == 1):
+            break
+        print("Sisesta ainult üks täht!")
+
+    for i in range(len(palgad)):
+        if (inimesed[i][0].lower() == letter.lower()):
+            print(inimesed[i], "-", palgad[i])
+
 
 def bbb():
     ...
