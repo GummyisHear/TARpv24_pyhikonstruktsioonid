@@ -38,6 +38,7 @@
     <Compile Include="plokkskeemid.py" />
     <Compile Include="register.py" />
     <Compile Include="sonastik.py" />
+    <Compile Include="sonastikModule.py" />
     <Compile Include="sone_funktsioonid.py" />
     <Compile Include="TARpv24_pyhikonstruktsioonid.py" />
     <Compile Include="MoodulTund6Def.py" />
