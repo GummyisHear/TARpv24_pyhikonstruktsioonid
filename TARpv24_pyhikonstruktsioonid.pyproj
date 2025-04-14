@@ -26,6 +26,8 @@
     <Compile Include="arvestustoo.py" />
     <Compile Include="collatz.py" />
     <Compile Include="donut.py" />
+    <Compile Include="failid.py" />
+    <Compile Include="failidModule.py" />
     <Compile Include="harjutused1.py" />
     <Compile Include="jarjendTest.py" />
     <Compile Include="KehaIndeks.py" />
@@ -49,6 +51,11 @@
     <Compile Include="tund3.py" />
     <Compile Include="tund5.py" />
     <Compile Include="vigade_otsing.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="riigid_pealinnad.txt" />
+    <Content Include="sonastik.txt" />
+    <Content Include="test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

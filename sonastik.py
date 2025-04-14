@@ -5,6 +5,9 @@ while True:
     print("Sõnastik!!!")
 
     kuva_menu()
+    if (len(sonastik) == 0):
+        print("Loeme sõnad failist")
+        loeFail()
 
     sona = input("Sisesta sõna või menüü valik: ").strip().lower()
     valik = -1
@@ -26,6 +29,8 @@ while True:
             print("Sõna ei leitud")
 
     if (valik == 0):
+        print("Salvestame failile...")
+        kirjutaFail()
         print("Head aega!")
         break
 
@@ -57,5 +62,9 @@ while True:
 
     if (valik == 8):
         juhuslik_sona()
+
+    if (valik == 9):
+        print("Salvestame failile...")
+        kirjutaFail()
 
     print()

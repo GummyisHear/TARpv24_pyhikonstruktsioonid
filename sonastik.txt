@@ -1,0 +1,9 @@
+﻿#est;rus;eng
+koer;собака;dog
+kass;кошка;cat
+maja;дом;house
+auto;машина;car
+päike;солнце;sun
+tere;привет;hello
+#rus;eng
+питон;python

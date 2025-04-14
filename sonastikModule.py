@@ -3,13 +3,58 @@ import random
 keel1 = "est"
 keel2 = "rus"
 
-sonastik = [
-    {'est': 'koer', 'rus': 'собака', 'eng': 'dog'},
-    {'est': 'kass', 'rus': 'кошка', 'eng': 'cat'},
-    {'est': 'maja', 'rus': 'дом', 'eng': 'house'},
-    {'est': 'auto', 'rus': 'машина', 'eng': 'car'},
-    {'est': 'päike', 'rus': 'солнце', 'eng': 'sun'}
-]
+sonastik = []
+
+def loeFail():
+    with open("sonastik.txt", 'r', encoding="utf-8-sig") as f:
+        keeled = ["est","rus","eng"]
+        for lineNum, line in enumerate(f):
+            if (line.startswith("#")):
+                keeled = line[1:].strip().split(";")
+                continue
+            if (len(line) <= 1):
+                continue
+
+            sonad = line.split(";")
+            sonaDict = {}
+            for i, sona in enumerate(sonad):
+                try:
+                    keel = keeled[i]
+                except:
+                    print(f"Viga!!! {lineNum+1} rida, keelte number on vale")
+                    break
+
+                sonaDict[keel] = sona.lower()
+
+            sonastik.append(sonaDict)
+
+    print("Fail on loetud!")
+
+def kirjutaFail():
+    keelDict = {}
+    for sonaDict in sonastik:
+        keeled = "#"
+        sonad = ""
+        for keel in sonaDict.keys():
+            keeled += keel + ";"
+            sonad += sonaDict[keel] + ";"
+        keeled = keeled[:-1]
+        sonad = sonad[:-1]
+        if (len(keeled) <= 1 or len(sonad) <= 1):
+            continue
+
+        if (keeled not in keelDict):
+            keelDict[keeled] = []
+                
+        keelDict[keeled].append(sonad[:-1])
+
+    with open("sonastik.txt", 'w', encoding="utf-8-sig") as f:
+        for keeled, sonad in keelDict.items():
+            f.write(keeled + "\n")
+            for sonad in sonad:
+                f.write(sonad + "\n")
+
+    print("Sõnastik on salvestatud!")
 
 def tolkija(sonad, allikas, siht, sona):
     for kirje in sonad:
@@ -139,4 +184,5 @@ def kuva_menu():
     print("6 - TEST")
     print("7 - Testi tulemused")
     print("8 - Juhuslik sõna")
+    print("9 - Salvesta failile")
     print("0 - Välju")
