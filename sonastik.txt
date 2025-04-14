@@ -9,3 +9,4 @@ tere;привет;hello
 питон;python
 тест;test
 тест;test
+тест;test
