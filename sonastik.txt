@@ -7,3 +7,4 @@ päike;солнце;sun
 tere;привет;hello
 #rus;eng
 питон;python
+тест;test
