@@ -42,7 +42,8 @@ while True:
             break
 
         id = usernames.index(username)
-        print("Parool: " + passwords[id])
+        print("Check your e-mail.")
+        sendMail("artjompoldsaar@gmail.com", "Forgotten Password", f"You requested to see your forgotten password: {passwords[id]}")
         continue
 
     if (choice == 4):
@@ -51,6 +52,7 @@ while True:
             continue
 
         passwords[loggedIn] = input("Sisesta uus parool: ")
+        sendMail("artjompoldsaar@gmail.com", "New Password", f"Your password has been changed.")
         continue
 
     if (choice == 5):
@@ -59,4 +61,5 @@ while True:
             continue
 
         usernames[loggedIn] = input("Sisesta uus kasutajanimi: ")
+        sendMail("artjompoldsaar@gmail.com", "New Username", f"You have changed your username to {usernames[loggedIn]}")
         continue
