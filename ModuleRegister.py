@@ -6,9 +6,10 @@ import smtplib
 import ssl
 from tkinter import filedialog
 
-usernames = [ "artjomProGamer" ]
-passwords = [ "1234" ]
-loggedIn = -1
+auths = {
+    "artjom": "1234"    
+}
+loggedIn = ""
 
 def randomPassword(length:int = 8)->str:
     chars = string.ascii_letters + string.digits
@@ -44,21 +45,19 @@ def register()->any:
     else:
         password = input("Parool: ")
 
-    usernames.append(username)
-    passwords.append(password)
+    auths[username] = password
     sendMail("artjompoldsaar@gmail.com", "Registered", f"Welcome {username}! Thanks for registering.")
 
-def loginId(user:str, password:str)->int:
-    for i in range(len(usernames)):
-        if usernames[i] == user and passwords[i] == password:
-            return i
-
-    return -1
+def loginId(user:str, password:str)->str:
+    if (user in auths and auths[user] == password):
+        return user
+       
+    return ""
 
 def inputNewUsername(text:str)->str:
     while True:
         username = input(text)
-        if username in usernames:
+        if username in auths:
             print("See kasutajanimi on juba kasutatud.")
         else:
             return username
@@ -91,3 +90,17 @@ def sendMail(to:str, subj:str, content:str):
             print("Kiri saadetud!")
     except Exception as e:
         print(f"Viga: {e}")
+
+def readFile():
+    with open("auths.txt", 'r', encoding="utf-8-sig") as f:
+        for line in f:
+            user, password = line.split(":")
+            auths[user] = password.strip()
+    print("Fail loetud.")
+
+def saveFile():
+    with open("auths.txt", 'w', encoding="utf-8-sig") as f:
+        for user, password in auths.items():
+            f.write(f"{user}:{password}" + "\n")
+
+    print("Fail salvestatud.")
