@@ -1,10 +1,36 @@
 ﻿{
-  "Mis on Python?": "programmeerimiskeel",
-  "Mis värvi on lumi?": "valge",
-  "Mis on Eesti pealinn?": "Tallinn",
-  "Mitu kätt on inimesel tavaliselt?": "kaks",
-  "Kuidas nimetatakse noort kassi?": "kassipoeg",
-  "Mis on number kaheksa rooma number?": "VIII",
-  "Mis on vee keemiline sümbol?": "H2O",
-  "test?": "True"
+  "kusimused": [
+    {
+      "question": "Mis on Python?",
+      "answer": "programmeerimiskeel"
+    },
+    {
+      "question": "Mis värvi on lumi?",
+      "answer": "valge"
+    },
+    {
+      "question": "Mis on Eesti pealinn?",
+      "answer": "Tallinn"
+    },
+    {
+      "question": "Mitu kätt on inimesel tavaliselt?",
+      "answer": "kaks"
+    },
+    {
+      "question": "Kuidas nimetatakse noort kassi?",
+      "answer": "kassipoeg"
+    },
+    {
+      "question": "Mis on number kaheksa rooma number?",
+      "answer": "VIII"
+    },
+    {
+      "question": "Mis on vee keemiline sümbol?",
+      "answer": "H2O"
+    },
+    {
+      "question": "test",
+      "answer": "123"
+    }
+  ]
 }

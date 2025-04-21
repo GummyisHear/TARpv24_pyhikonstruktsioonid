@@ -55,7 +55,10 @@ def loeJsonFail(nimi:str)->dict:
 
 # TODO unfinished here
 def salvestaJsonFail(data:dict, nimi:str)->None:
-    andmed = {"kusimused": data}
+    andmed = {"kusimused": []}
+    for k, v in data.items():
+        andmed["kusimused"].append({"question": k, "answer": v})
+
     with open(dir(nimi), "w", encoding="utf-8-sig") as f:
         json.dump(andmed, f, indent=2, ensure_ascii=False)
 
