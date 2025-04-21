@@ -53,7 +53,6 @@ def loeJsonFail(nimi:str)->dict:
         andmed = json.load(f)
     return andmed
 
-# TODO unfinished here
 def salvestaJsonFail(data:dict, nimi:str)->None:
     andmed = {"kusimused": []}
     for k, v in data.items():
