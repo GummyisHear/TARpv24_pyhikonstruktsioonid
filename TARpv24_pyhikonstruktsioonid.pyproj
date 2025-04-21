@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>register.py</StartupFile>
+    <StartupFile>kusimustik\kusimustik.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,9 +30,13 @@
     <Compile Include="failidModule.py" />
     <Compile Include="harjutused1.py" />
     <Compile Include="jarjendTest.py" />
+    <Compile Include="jsonAndmed.py" />
+    <Compile Include="jsonWeather.py" />
+    <Compile Include="jsonKeerulisedAndmed.py" />
     <Compile Include="KehaIndeks.py" />
     <Compile Include="kivipaberkäärid.py" />
     <Compile Include="kordused_kt.py" />
+    <Compile Include="kusimustik\kusimustik.py" />
     <Compile Include="matemaatika.py" />
     <Compile Include="ModuleRegister.py" />
     <Compile Include="palgad.py" />
@@ -53,10 +57,17 @@
     <Compile Include="vigade_otsing.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="andmed.json" />
     <Content Include="auths.txt" />
+    <Content Include="klass.json" />
+    <Content Include="kusimustik\kusimused.json" />
     <Content Include="riigid_pealinnad.txt" />
     <Content Include="sonastik.txt" />
     <Content Include="test.txt" />
+    <Content Include="weather.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="kusimustik\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

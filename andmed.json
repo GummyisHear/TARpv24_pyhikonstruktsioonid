@@ -1,0 +1,44 @@
+{
+  "nimi": "Anna",
+  "vanus": 25,
+  "abielus": false,
+  "lapsed": [ "Inna", "Mati" ],
+  "koduloomad": null,
+  "autod": [
+    {
+      "muudel": "Toyota",
+      "varv": "punane",
+      "number": "123ABC",
+      "joud": 500,
+      "aasta": 2015
+    },
+    {
+      "muudel": "BMW",
+      "varv": "must",
+      "number": "456DEF",
+      "joud": 300,
+      "aasta": 2018
+    },
+    {
+      "muudel": "Audi",
+      "varv": "hall",
+      "number": "789GHI",
+      "joud": 400,
+      "aasta": 2020
+    },
+    {
+      "muudel": "Mercedes",
+      "varv": "valge",
+      "number": "101JKL",
+      "joud": 600,
+      "aasta": 2021
+    },
+    {
+      "muudel": "Ford",
+      "varv": "sinine",
+      "number": "112MNO",
+      "joud": 350,
+      "aasta": 2019
+    }
+  ]
+}

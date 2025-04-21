@@ -21,7 +21,7 @@ def saadaKiri():
     <head>
     </head>
     <body>
-    <h1>privet blyat</h1>
+    <h1>privet</h1>
     <p>privet,</p>
     <a href="https://artjompoldsaar1.wordpress.com/">here my wordpress</a>
     </body>
