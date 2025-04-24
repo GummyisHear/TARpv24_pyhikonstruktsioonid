@@ -2,8 +2,7 @@ import requests
 import json
 
 def work():
-    api_voti = "5b77075af00cf7eaba7fad26beb0f447"
-    #api_voti = "4160bb7aeefe7aba552ea8aabe0224ed"
+    api_voti = ""
     linn = input("Sisesta linna nimi: ")
     url = f"http://api.openweathermap.org/data/2.5/weather?appid={api_voti}&q={linn}&units=metric&lang=et"
     vastus = requests.get(url)
