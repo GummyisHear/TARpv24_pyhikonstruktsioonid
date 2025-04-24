@@ -9,15 +9,15 @@ kus_vas = {}
 oiged = {}
 valed = {}
 emails = {}
+senderEmail = ""
+appPassword = ""
 
 def saadaKiri(saaja:str, teema:str, sisu:str):
     server = "smtp.gmail.com"
     port = 587
-    sender = "" # sender email
-    password = "" # app password
     msg = EmailMessage()
     msg["Subject"] = teema
-    msg["From"] = sender
+    msg["From"] = senderEmail
     msg["To"] = saaja
     msg.set_content(sisu)
 
@@ -25,7 +25,7 @@ def saadaKiri(saaja:str, teema:str, sisu:str):
         with smtplib.SMTP(server, port) as smtp:
             smtp.ehlo()
             smtp.starttls(context=ssl.create_default_context())
-            smtp.login(sender, password)
+            smtp.login(senderEmail, appPassword)
             smtp.send_message(msg)
             print("Kiri saadetud!")
     except Exception as e:
@@ -157,21 +157,23 @@ def sooritaKusimustik():
     email = input("Sisesta töötaja e-mail: ")
 
     saadaKiri(email, "Tänased küsimustiku tulemused", f"""
-    Tere!
+Tere!
 
-    Tänased küsimustiku tulemused: 
+Tänased küsimustiku tulemused: 
 
-    {leaderboard}
+{leaderboard}
 
-    Parim vastaja: {parimNimi} ({parimPunkt} õigesti))
+Parim vastaja: {parimNimi} ({parimPunkt} õigesti)
 
-    Lugupidamisega,
-    Küsimustiku Automaatprogramm
-    """)
+Lugupidamisega,
+Küsimustiku Automaatprogramm""")
 
 andmed = loeJsonFail("kusimused.json")
 for kusimus in andmed.get("kusimused", "[]"):
     kus_vas[kusimus["question"]] = kusimus["answer"]
+
+senderEmail = input("Sisesta app e-mail: ")
+appPassword = input("Sisesta app parool: ")
 
 while True:
     print("1. Alusta küsimustikku")
