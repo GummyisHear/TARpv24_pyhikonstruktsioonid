@@ -70,7 +70,6 @@ def calculate():
     else:
         lahendus = "Lahendusi pole!"
 
-
     answer.config(text=f"{a}x^2 + {b}x + {c} = 0\nD = {delta}\n{lahendus}")
 
 def getPorabolaHeight(a, b, c):
