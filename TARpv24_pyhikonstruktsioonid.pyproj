@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>matplotlib\graafik.py</StartupFile>
+    <StartupFile>ruutvorrand.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -44,12 +44,14 @@
     <Compile Include="palgadModule.py" />
     <Compile Include="plokkskeemid.py" />
     <Compile Include="register.py" />
+    <Compile Include="ruutvorrand.py" />
     <Compile Include="sonastik.py" />
     <Compile Include="sonastikModule.py" />
     <Compile Include="sone_funktsioonid.py" />
     <Compile Include="TARpv24_pyhikonstruktsioonid.py" />
     <Compile Include="MoodulTund6Def.py" />
     <Compile Include="Tund6Def.py" />
+    <Compile Include="tund8tkinter.py" />
     <Compile Include="wordle.py" />
     <Compile Include="timeTest.py" />
     <Compile Include="tund2.py" />
@@ -64,6 +66,7 @@
     <Content Include="kusimustik\kusimused.json" />
     <Content Include="riigid_pealinnad.txt" />
     <Content Include="sonastik.txt" />
+    <Content Include="icon.ico" />
     <Content Include="test.txt" />
     <Content Include="weather.json" />
   </ItemGroup>
