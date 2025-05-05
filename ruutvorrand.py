@@ -20,15 +20,40 @@ def getInputValue(entry:Entry, default):
 
     return float(entry.get())
 
+def getInputs():
+    try:
+        a = getInputValue(aInput, 1)
+    except ValueError:
+        aInput.config(bg="red", fg="white")
+        answer.config(text="Viga sisendis!", bg="red", fg="white")
+        return
+    try:
+        b = getInputValue(bInput, 1)
+    except ValueError:
+        bInput.config(bg="red", fg="white")
+        answer.config(text="Viga sisendis!", bg="red", fg="white")
+        return
+
+    try:
+        c = getInputValue(cInput, 0)
+    except ValueError:
+        cInput.config(bg="red", fg="white")
+        answer.config(text="Viga sisendis!", bg="red", fg="white")
+        return
+
+    return a, b, c
+
 def calculate():
     print("Arvutame...")
 
+    aInput.config(bg="white", fg="black")
+    bInput.config(bg="white", fg="black")
+    cInput.config(bg="white", fg="black")
+    answer.config(bg="yellow", fg="green")
+
     try:
-        a = getInputValue(aInput, 1)
-        b = getInputValue(bInput, 1)
-        c = getInputValue(cInput, 0)
-    except ValueError:
-        answer.config(text="Viga sisendis!", bg="red", fg="white")
+        a, b, c = getInputs()
+    except:
         return
 
     print(f"Arvutame {a}x^2 + {b}x + {c} = 0")
