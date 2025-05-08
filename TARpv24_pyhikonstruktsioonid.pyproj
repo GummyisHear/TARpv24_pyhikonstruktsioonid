@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ruutvorrand.py</StartupFile>
+    <StartupFile>epostForm.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,6 +26,7 @@
     <Compile Include="arvestustoo.py" />
     <Compile Include="collatz.py" />
     <Compile Include="donut.py" />
+    <Compile Include="epostForm.py" />
     <Compile Include="failid.py" />
     <Compile Include="failidModule.py" />
     <Compile Include="harjutused1.py" />
