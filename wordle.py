@@ -59,3 +59,4 @@ for i in range(katsed):
         print(Back.CYAN + f"Vastus oli: {vastus}")
         print(Fore.RED + figlet_format('You lose!', font='doom'))
         break
+

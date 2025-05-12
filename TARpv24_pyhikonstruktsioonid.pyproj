@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>epostForm.py</StartupFile>
+    <StartupFile>wordleGui\wordle.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -59,6 +59,7 @@
     <Compile Include="tund3.py" />
     <Compile Include="tund5.py" />
     <Compile Include="vigade_otsing.py" />
+    <Compile Include="wordleGui\wordle.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="andmed.json" />
@@ -70,10 +71,12 @@
     <Content Include="icon.ico" />
     <Content Include="test.txt" />
     <Content Include="weather.json" />
+    <Content Include="wordleGui\sonad.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="kusimustik\" />
     <Folder Include="matplotlib\" />
+    <Folder Include="wordleGui\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
