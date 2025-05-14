@@ -1,10 +1,5 @@
-eesti
+24
 sõber
-ploom
-metsa
-rikas
-tunne
-roosa
-kalad
-naine
-päike
+eesti
+roman
+nekit

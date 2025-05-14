@@ -71,6 +71,7 @@
     <Content Include="icon.ico" />
     <Content Include="test.txt" />
     <Content Include="weather.json" />
+    <Content Include="wordleGui\settings.png" />
     <Content Include="wordleGui\sonad.txt" />
   </ItemGroup>
   <ItemGroup>
