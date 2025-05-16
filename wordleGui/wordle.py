@@ -1,3 +1,4 @@
+from operator import le
 import os
 import random
 from tkinter import *
@@ -16,6 +17,12 @@ gameNumber = 0
 answer = ""
 katsed = 6
 tiles = []
+keyboard = []
+keyboardKeys = [
+    "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "Ü", "Õ",
+    "A", "S", "D", "F", "G", "H", "J", "K", "L", "Ö", "Ä",
+    "Ž", "Z", "X", "C", "V", "B", "N", "M"
+]
 currentKey = 0
 currentRow = 0
 
@@ -55,9 +62,12 @@ def startGame(root):
     global currentKey
     global currentRow
     global gameNumber
+    global keyboard
 
     for tile in tiles:
         resetTile(tile)
+    for tile in keyboard:
+        resetTile(tile, tile.cget("text"))
 
     gameNumber += 1
     updateGameNumber()
@@ -81,18 +91,52 @@ def initTiles(root):
     global tiles
     for y in range(katsed):
         for x in range(5):
-            tile = createTile(root, 20, 20, 16)
+            tile = createTile(root, 16)
             tiles.append(tile)
             tile.grid(row=y+1, column=x, padx=5, pady=5)
 
-def createTile(root, width, height, fontSize)->Label:
-    label = Label(root, text="", width=2, height=1, font=("Arial", fontSize, "bold"), anchor="center")
+def createTile(root, fontSize, text = "")->Label:
+    label = Label(root, text=text, width=2, height=1, font=("Arial", fontSize, "bold"), anchor="center")
     label.config(bg=BACKGROUND, fg="white", highlightbackground=GREY, highlightthickness=2)
     return label
 
-def resetTile(tile:Label):
+def initKeyboard(root):
+    global keyboard
+    global keyboardKeys
+    x = 0
+    y = 0 # 12 11 8
+    for i in range(12):
+        key = keyboardKeys[i]
+        tile = createTile(root, 12, key)
+        keyboard.append(tile)
+        tile.grid(row=y, column=x+i, padx=2, pady=2)
+    x = 1
+    y = 1
+    for i in range(0, 11):
+        key = keyboardKeys[i + 12]
+        tile = createTile(root, 12, key)
+        keyboard.append(tile)
+        tile.grid(row=y, column=x+i, padx=2, pady=2)
+    x = 2
+    y = 2
+    for i in range(0, 8):
+        key = keyboardKeys[i + 23]
+        tile = createTile(root, 12, key)
+        keyboard.append(tile)
+        tile.grid(row=y, column=x+i, padx=2, pady=2)
+
+def colorKeyboard(letter, color):
+    global keyboard
+    global answer
+    i = keyboardKeys.index(letter.upper())
+    tile = keyboard[i]
+    if (tile.cget("bg") != BACKGROUND):
+        return
+    tile.config(bg = color)
+
+def resetTile(tile:Label, text = ""):
     tile.config(bg=BACKGROUND, fg="white", highlightbackground=GREY, highlightthickness=2)
-    tile.config(text="")
+    tile.config(text=text)
 
 def colorTile(tile:Label, color:str):
     tile.config(bg=color, highlightbackground=color)
@@ -181,21 +225,25 @@ def onKey(event:Event):
         if (currentKey != 5):
             return
 
+        vastus = answer.upper()
         guess = ""
-        tempAnswer = answer
+        tempAnswer = vastus
         for i in range(5):
             tile:Label = tiles[currentRow * 5 + i]
-            char = tile.cget("text")
-            if (char == answer[i]):
+            char = tile.cget("text").upper()
+            if (char == vastus[i]):
                 colorTile(tile, GREEN)
+                colorKeyboard(char, GREEN)
             elif (char in tempAnswer):
                 colorTile(tile, YELLOW)
+                colorKeyboard(char, YELLOW)
             else:
                 colorTile(tile, GREY)
+                colorKeyboard(char, GREY)
             tempAnswer = tempAnswer.replace(char, "", 1)
             guess += char
 
-        if (guess == answer):
+        if (guess == vastus):
             onVictory()
             return
 
@@ -224,7 +272,7 @@ def onKey(event:Event):
 
     tileId = currentRow * 5 + currentKey
     tile:Label = tiles[tileId]
-    tile.config(text=char)
+    tile.config(text=char.upper())
     currentKey += 1
 
 def openSettings():
@@ -285,12 +333,12 @@ def openSettings():
 
     buttonFrame = Frame(window, bg=BACKGROUND)
 
-    button = Button(buttonFrame, text="Add Word", command=add_word)
+    button = Button(buttonFrame, text="Lisa", command=add_word)
     button.config(relief="solid", width=16)
     button.config(bg=GREY, fg="white", activebackground=GREEN, activeforeground="white", border=0)
     button.grid(row=0, column=0, pady=10, padx=10)
 
-    button = Button(buttonFrame, text="Remove Word", command=remove_word)
+    button = Button(buttonFrame, text="Kustuta", command=remove_word)
     button.config(relief="solid", width=16)
     button.config(bg=GREY, fg="white", activebackground=RED, activeforeground="white", border=0)
     button.grid(row=0, column=1, pady=10, padx=10)
@@ -316,6 +364,10 @@ button.place(x=10, y=10)
 tileFrame = Frame(root, bg=BACKGROUND)
 initTiles(tileFrame)
 tileFrame.pack(pady=20, padx=20, anchor="center")
+
+keyboardFrame = Frame(root, bg=BACKGROUND)
+initKeyboard(keyboardFrame)
+keyboardFrame.pack(pady=20, padx=20, anchor="center")
 
 readFile()
 startGame(root)

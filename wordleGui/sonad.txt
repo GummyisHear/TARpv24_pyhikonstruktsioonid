@@ -1,5 +1,6 @@
-24
+45
 sõber
 eesti
 roman
 nekit
+päike
