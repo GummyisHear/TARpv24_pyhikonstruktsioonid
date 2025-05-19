@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>wordleGui\wordle.py</StartupFile>
+    <StartupFile>fotorobot\fotorobot.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,6 +29,7 @@
     <Compile Include="epostForm.py" />
     <Compile Include="failid.py" />
     <Compile Include="failidModule.py" />
+    <Compile Include="fotorobot\fotorobot.py" />
     <Compile Include="harjutused1.py" />
     <Compile Include="jarjendTest.py" />
     <Compile Include="jsonAndmed.py" />
@@ -64,6 +65,55 @@
   <ItemGroup>
     <Content Include="andmed.json" />
     <Content Include="auths.txt" />
+    <Content Include="fotorobot\gimp\clownface.xcf" />
+    <Content Include="fotorobot\gimp\flusheye.xcf" />
+    <Content Include="fotorobot\gimp\impeyes.xcf" />
+    <Content Include="fotorobot\gimp\moneyeyes.xcf" />
+    <Content Include="fotorobot\gimp\nerd-face-emoji-teeth.xcf" />
+    <Content Include="fotorobot\parts\eyebrow_1.png" />
+    <Content Include="fotorobot\parts\eyebrow_2.png" />
+    <Content Include="fotorobot\parts\eyes_1.png" />
+    <Content Include="fotorobot\parts\eyes_10.png" />
+    <Content Include="fotorobot\parts\eyes_2.png" />
+    <Content Include="fotorobot\parts\eyes_3.png" />
+    <Content Include="fotorobot\parts\eyes_4.png" />
+    <Content Include="fotorobot\parts\eyes_5.png" />
+    <Content Include="fotorobot\parts\eyes_6.png" />
+    <Content Include="fotorobot\parts\eyes_7.png" />
+    <Content Include="fotorobot\parts\eyes_8.png" />
+    <Content Include="fotorobot\parts\eyes_9.png" />
+    <Content Include="fotorobot\parts\face_1.png" />
+    <Content Include="fotorobot\parts\face_2.png" />
+    <Content Include="fotorobot\parts\face_3.png" />
+    <Content Include="fotorobot\parts\face_4.png" />
+    <Content Include="fotorobot\parts\face_5.png" />
+    <Content Include="fotorobot\parts\face_6.png" />
+    <Content Include="fotorobot\parts\mouth_1.png" />
+    <Content Include="fotorobot\parts\mouth_10.png" />
+    <Content Include="fotorobot\parts\mouth_2.png" />
+    <Content Include="fotorobot\parts\mouth_3.png" />
+    <Content Include="fotorobot\parts\mouth_4.png" />
+    <Content Include="fotorobot\parts\mouth_5.png" />
+    <Content Include="fotorobot\parts\mouth_6.png" />
+    <Content Include="fotorobot\parts\mouth_7.png" />
+    <Content Include="fotorobot\parts\mouth_8.png" />
+    <Content Include="fotorobot\parts\mouth_9.png" />
+    <Content Include="fotorobot\parts\nose_1.png" />
+    <Content Include="fotorobot\gimp\poopeyes.xcf" />
+    <Content Include="fotorobot\gimp\roboteyes.xcf" />
+    <Content Include="fotorobot\gimp\skulleyes.xcf" />
+    <Content Include="fotorobot\gimp\sobmouth.xcf" />
+    <Content Include="fotorobot\todo\clown-face-emoji-1024x1024-es3pjb9a.png" />
+    <Content Include="fotorobot\todo\dazed-face-flushed-flirt-flushed-emoji-discord--m2H7Z5K9N4m2d3b1.png" />
+    <Content Include="fotorobot\todo\face-vomiting-emoji-1935x2048-trujxtjf.png" />
+    <Content Include="fotorobot\todo\loudly-crying-face-emoji-512x512-lgx4f8sa.png" />
+    <Content Include="fotorobot\todo\money-mouth-face-emoji-2048x2048-pzowsgj4.png" />
+    <Content Include="fotorobot\todo\nerd-face-emoji-2048x2048-toyasgnd.png" />
+    <Content Include="fotorobot\todo\pile-of-poo-emoji-1024x1024-5s6vj90p.png" />
+    <Content Include="fotorobot\todo\robot-face-emoji-1024x996-bjk7ltzi.png" />
+    <Content Include="fotorobot\todo\skull-emoji-455x512-zg2eawez.png" />
+    <Content Include="fotorobot\todo\smiling-face-with-horns-emoji-256x256-qr9fuyvo.png" />
+    <Content Include="fotorobot\gimp\vomiteyes.xcf" />
     <Content Include="klass.json" />
     <Content Include="kusimustik\kusimused.json" />
     <Content Include="riigid_pealinnad.txt" />
@@ -75,6 +125,10 @@
     <Content Include="wordleGui\sonad.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="fotorobot\" />
+    <Folder Include="fotorobot\gimp\" />
+    <Folder Include="fotorobot\parts\" />
+    <Folder Include="fotorobot\todo\" />
     <Folder Include="kusimustik\" />
     <Folder Include="matplotlib\" />
     <Folder Include="wordleGui\" />
