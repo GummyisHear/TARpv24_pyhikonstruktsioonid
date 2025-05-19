@@ -28,7 +28,8 @@ faces = {
     "imp_face": "fotorobot/parts/face_3.png",
     "poop_face": "fotorobot/parts/face_4.png",
     "robot_face": "fotorobot/parts/face_5.png",
-    "skull_face": "fotorobot/parts/face_6.png"
+    "skull_face": "fotorobot/parts/face_6.png",
+    "ogre_face": "fotorobot/parts/face_7.png",
 }
 eyes = {
     "clown_eyes": "fotorobot/parts/eyes_1.png",
@@ -41,6 +42,7 @@ eyes = {
     "skull_eyes": "fotorobot/parts/eyes_8.png",
     "sob_eyes": "fotorobot/parts/eyes_9.png",
     "vomit_eyes": "fotorobot/parts/eyes_10.png",
+    "ogre_eyes": "fotorobot/parts/eyes_11.png",
 }
 mouths = {
     "clown_mouth": "fotorobot/parts/mouth_1.png",
@@ -51,7 +53,8 @@ mouths = {
     "poop_mouth": "fotorobot/parts/mouth_6.png",
     "robot_mouth": "fotorobot/parts/mouth_7.png",
     "sob_mouth": "fotorobot/parts/mouth_8.png",
-    "vomit_mouth": "fotorobot/parts/mouth_9.png"
+    "vomit_mouth": "fotorobot/parts/mouth_9.png",
+    "ogre_mouth": "fotorobot/parts/mouth_10.png",
 }
 eyebrows = {
     "flushed_eyebrow": "fotorobot/parts/eyebrow_1.png",
@@ -59,7 +62,8 @@ eyebrows = {
 }
 noses = {
     "clown_nose": "fotorobot/parts/nose_1.png",
-    "skull_nose": "fotorobot/parts/nose_2.png"
+    "skull_nose": "fotorobot/parts/nose_2.png",
+    "ogre_nose": "fotorobot/parts/nose_3.png",
 }
 
 assets = {**faces, **eyebrows, **noses,**eyes, **mouths}
