@@ -1,4 +1,5 @@
 
+from turtle import width
 import customtkinter as ctk
 from tkinter import simpledialog, Canvas
 from PIL import Image, ImageTk
@@ -23,51 +24,55 @@ MOUTH = 3
 NOSE = 4
 
 faces = {
-    "clown_face": "fotorobot/parts/face_1.png",
-    "yellow_face": "fotorobot/parts/face_2.png",
-    "imp_face": "fotorobot/parts/face_3.png",
-    "poop_face": "fotorobot/parts/face_4.png",
-    "robot_face": "fotorobot/parts/face_5.png",
-    "skull_face": "fotorobot/parts/face_6.png",
-    "ogre_face": "fotorobot/parts/face_7.png",
+    "klouni_nägu": "fotorobot/parts/face_1.png",
+    "kollane_nägu": "fotorobot/parts/face_2.png",
+    "imp_nägu": "fotorobot/parts/face_3.png",
+    "kaka_nägu": "fotorobot/parts/face_4.png",
+    "robot_nägu": "fotorobot/parts/face_5.png",
+    "kolju_nägu": "fotorobot/parts/face_6.png",
+    "ogre_nägu": "fotorobot/parts/face_7.png",
 }
+
 eyes = {
-    "clown_eyes": "fotorobot/parts/eyes_1.png",
-    "flushed_eyes": "fotorobot/parts/eyes_2.png",
-    "imp_eyes": "fotorobot/parts/eyes_3.png",
-    "nerd_eyes": "fotorobot/parts/eyes_4.png",
-    "money_eyes": "fotorobot/parts/eyes_5.png",
-    "poop_eyes": "fotorobot/parts/eyes_6.png",
-    "robot_eyes": "fotorobot/parts/eyes_7.png",
-    "skull_eyes": "fotorobot/parts/eyes_8.png",
-    "sob_eyes": "fotorobot/parts/eyes_9.png",
-    "vomit_eyes": "fotorobot/parts/eyes_10.png",
-    "ogre_eyes": "fotorobot/parts/eyes_11.png",
+    "klouni_silmad": "fotorobot/parts/eyes_1.png",
+    "punastunud_silmad": "fotorobot/parts/eyes_2.png",
+    "imp_silmad": "fotorobot/parts/eyes_3.png",
+    "geeniuse_silmad": "fotorobot/parts/eyes_4.png",
+    "raha_silmad": "fotorobot/parts/eyes_5.png",
+    "kaka_silmad": "fotorobot/parts/eyes_6.png",
+    "robot_silmad": "fotorobot/parts/eyes_7.png",
+    "kolju_silmad": "fotorobot/parts/eyes_8.png",
+    "nutvad_silmad": "fotorobot/parts/eyes_9.png",
+    "oksendavad_silmad": "fotorobot/parts/eyes_10.png",
+    "ogre_silmad": "fotorobot/parts/eyes_11.png",
 }
+
 mouths = {
-    "clown_mouth": "fotorobot/parts/mouth_1.png",
-    "flushed_mouth": "fotorobot/parts/mouth_2.png",
-    "imp_mouth": "fotorobot/parts/mouth_3.png",
-    "nerd_mouth": "fotorobot/parts/mouth_4.png",
-    "money_mouth": "fotorobot/parts/mouth_5.png",
-    "poop_mouth": "fotorobot/parts/mouth_6.png",
-    "robot_mouth": "fotorobot/parts/mouth_7.png",
-    "sob_mouth": "fotorobot/parts/mouth_8.png",
-    "vomit_mouth": "fotorobot/parts/mouth_9.png",
-    "ogre_mouth": "fotorobot/parts/mouth_10.png",
+    "klouni_suu": "fotorobot/parts/mouth_1.png",
+    "punastunud_suu": "fotorobot/parts/mouth_2.png",
+    "imp_suu": "fotorobot/parts/mouth_3.png",
+    "geeniuse_suu": "fotorobot/parts/mouth_4.png",
+    "raha_suu": "fotorobot/parts/mouth_5.png",
+    "kaka_suu": "fotorobot/parts/mouth_6.png",
+    "robot_suu": "fotorobot/parts/mouth_7.png",
+    "nutvad_suu": "fotorobot/parts/mouth_8.png",
+    "oksendavad_suu": "fotorobot/parts/mouth_9.png",
+    "ogre_suu": "fotorobot/parts/mouth_10.png",
 }
+
 eyebrows = {
-    "flushed_eyebrow": "fotorobot/parts/eyebrow_1.png",
-    "sob_eyebrow": "fotorobot/parts/eyebrow_2.png"
+    "punastunud_kulmud": "fotorobot/parts/eyebrow_1.png",
+    "nutvad_kulmud": "fotorobot/parts/eyebrow_2.png"
 }
+
 noses = {
-    "clown_nose": "fotorobot/parts/nose_1.png",
-    "skull_nose": "fotorobot/parts/nose_2.png",
-    "ogre_nose": "fotorobot/parts/nose_3.png",
+    "klouni_nina": "fotorobot/parts/nose_1.png",
+    "kolju_nina": "fotorobot/parts/nose_2.png",
+    "ogre_nina": "fotorobot/parts/nose_3.png",
 }
 
 assets = {**faces, **eyebrows, **noses,**eyes, **mouths}
-currentParts = ["clown_face", "", "", "", ""]
+currentParts = ["", "", "", "", ""]
 partDicts = {
     FACE: faces,
     EYEBROWS: eyebrows,
@@ -109,7 +114,6 @@ def changePart(part, name):
         if (name == ""):
             continue
         path = assets[name]
-        print("Drawing:", name, "from", path)
         pil_img = Image.open(path).convert("RGBA").resize((400, 400))
         tk_img = ImageTk.PhotoImage(pil_img)
         imageRefs[name] = tk_img
@@ -135,11 +139,14 @@ def buttonPress(button, part):
 
 def createButton(root, defText="", partId=FACE)->ctk.CTkButton:
     button = ctk.CTkButton(root, text=defText, **seaded)
+    button.configure(width=300)
     button.configure(command=lambda: buttonPress(button, partId))
     return button
 
-frame = ctk.CTkFrame(app)
+frame = ctk.CTkFrame(app, width=350, height=600)
 frame.pack(side="left", padx=10, pady=10)
+frame.pack_propagate(False)
+
 seaded = {
     "width": 150, "height": 40,
     "font": ("Segoe UI Emoji", 32),
@@ -150,18 +157,17 @@ seaded = {
 
 ctk.CTkLabel(frame, text="Vali näoosad", **seaded).pack(pady=10)
 
-buttonFrame = ctk.CTkFrame(frame)
+buttonFrame = ctk.CTkFrame(frame, width=300, height=400)
 buttonFrame.pack(pady=10)
-createButton(buttonFrame, "clown_face", FACE).pack(pady=10)
-createButton(buttonFrame, "None", EYEBROWS).pack(pady=10)
-createButton(buttonFrame, "None", NOSE).pack(pady=10)
-createButton(buttonFrame, "None", EYES).pack(pady=10)
-createButton(buttonFrame, "None", MOUTH).pack(pady=10)
+buttonFrame.pack_propagate(False)
+createButton(buttonFrame, "None", FACE).pack(pady=10, padx=10)
+createButton(buttonFrame, "None", EYEBROWS).pack(pady=10, padx=10)
+createButton(buttonFrame, "None", NOSE).pack(pady=10, padx=10)
+createButton(buttonFrame, "None", EYES).pack(pady=10, padx=10)
+createButton(buttonFrame, "None", MOUTH).pack(pady=10, padx=10)
 
-saveFrame = ctk.CTkFrame(frame)
-saveFrame.pack(pady=10)
-ctk.CTkButton(saveFrame, text="Salvesta Pilt", command=lambda: saveFace(), **seaded).pack(pady=10)
+ctk.CTkButton(frame, text="Salvesta Pilt", command=lambda: saveFace(), **seaded).pack(pady=10)
 
-changePart(FACE, "clown_face")
+changePart(FACE, "klouni_nägu")
 
 app.mainloop()
