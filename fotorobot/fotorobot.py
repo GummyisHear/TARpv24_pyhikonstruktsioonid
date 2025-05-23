@@ -1,9 +1,10 @@
-
+import random
 from turtle import width
 import customtkinter as ctk
 from tkinter import simpledialog, Canvas
 from PIL import Image, ImageTk
 import pygame
+import glob
 
 #pygame.mixer.init()
 #pygame.mixer.music.load("fotorobot/sounds/intro.mp3")
@@ -23,55 +24,17 @@ EYEBROWS = 2
 MOUTH = 3
 NOSE = 4
 
-faces = {
-    "klouni_nägu": "fotorobot/parts/face_1.png",
-    "kollane_nägu": "fotorobot/parts/face_2.png",
-    "imp_nägu": "fotorobot/parts/face_3.png",
-    "kaka_nägu": "fotorobot/parts/face_4.png",
-    "robot_nägu": "fotorobot/parts/face_5.png",
-    "kolju_nägu": "fotorobot/parts/face_6.png",
-    "ogre_nägu": "fotorobot/parts/face_7.png",
-}
+faces = {}
 
-eyes = {
-    "klouni_silmad": "fotorobot/parts/eyes_1.png",
-    "punastunud_silmad": "fotorobot/parts/eyes_2.png",
-    "imp_silmad": "fotorobot/parts/eyes_3.png",
-    "geeniuse_silmad": "fotorobot/parts/eyes_4.png",
-    "raha_silmad": "fotorobot/parts/eyes_5.png",
-    "kaka_silmad": "fotorobot/parts/eyes_6.png",
-    "robot_silmad": "fotorobot/parts/eyes_7.png",
-    "kolju_silmad": "fotorobot/parts/eyes_8.png",
-    "nutvad_silmad": "fotorobot/parts/eyes_9.png",
-    "oksendavad_silmad": "fotorobot/parts/eyes_10.png",
-    "ogre_silmad": "fotorobot/parts/eyes_11.png",
-}
+eyes = {}
 
-mouths = {
-    "klouni_suu": "fotorobot/parts/mouth_1.png",
-    "punastunud_suu": "fotorobot/parts/mouth_2.png",
-    "imp_suu": "fotorobot/parts/mouth_3.png",
-    "geeniuse_suu": "fotorobot/parts/mouth_4.png",
-    "raha_suu": "fotorobot/parts/mouth_5.png",
-    "kaka_suu": "fotorobot/parts/mouth_6.png",
-    "robot_suu": "fotorobot/parts/mouth_7.png",
-    "nutvad_suu": "fotorobot/parts/mouth_8.png",
-    "oksendavad_suu": "fotorobot/parts/mouth_9.png",
-    "ogre_suu": "fotorobot/parts/mouth_10.png",
-}
+mouths = {}
 
-eyebrows = {
-    "punastunud_kulmud": "fotorobot/parts/eyebrow_1.png",
-    "nutvad_kulmud": "fotorobot/parts/eyebrow_2.png"
-}
+eyebrows = {}
 
-noses = {
-    "klouni_nina": "fotorobot/parts/nose_1.png",
-    "kolju_nina": "fotorobot/parts/nose_2.png",
-    "ogre_nina": "fotorobot/parts/nose_3.png",
-}
+noses = {}
 
-assets = {**faces, **eyebrows, **noses,**eyes, **mouths}
+assets = {}
 currentParts = ["", "", "", "", ""]
 partDicts = {
     FACE: faces,
@@ -82,6 +45,30 @@ partDicts = {
 }
 
 imageRefs = {}
+
+def loadAssets():
+    global assets
+    for path in glob.glob("fotorobot/parts/faces/*.png"):
+        name = path.split("\\")[-1].split(".")[0]
+        faces[name] = path
+
+    for path in glob.glob("fotorobot/parts/eyes/*.png"):
+        name = path.split("\\")[-1].split(".")[0]
+        eyes[name] = path
+
+    for path in glob.glob("fotorobot/parts/eyebrows/*.png"):
+        name = path.split("\\")[-1].split(".")[0]
+        eyebrows[name] = path
+    
+    for path in glob.glob("fotorobot/parts/mouths/*.png"):
+        name = path.split("\\")[-1].split(".")[0]
+        mouths[name] = path
+
+    for path in glob.glob("fotorobot/parts/noses/*.png"):
+        name = path.split("\\")[-1].split(".")[0]
+        noses[name] = path
+
+    assets = {**faces, **eyebrows, **noses,**eyes, **mouths}
 
 def playMusic():
     pygame.mixer.music.play(loops=-1)
@@ -105,7 +92,7 @@ def saveFace():
         img = Image.open(path).convert("RGBA").resize((400, 400))
         image.paste(img, (0, 0), img)
 
-    image.save(fileName)
+    image.save("fotorobot/saved/" + fileName)
 
 def changePart(part, name):
     currentParts[part] = name
@@ -119,6 +106,12 @@ def changePart(part, name):
         imageRefs[name] = tk_img
         x, y = 202, 202
         canvas.create_image(x, y, image=tk_img)
+
+    faceButton.configure(text=currentParts[FACE] or "None")
+    eyebrowButton.configure(text=currentParts[EYEBROWS] or "None")
+    noseButton.configure(text=currentParts[NOSE] or "None")
+    eyesButton.configure(text=currentParts[EYES] or "None")
+    mouthButton.configure(text=currentParts[MOUTH] or "None")
 
 def buttonPress(button, part):
     current = currentParts[part]
@@ -143,6 +136,13 @@ def createButton(root, defText="", partId=FACE)->ctk.CTkButton:
     button.configure(command=lambda: buttonPress(button, partId))
     return button
 
+def randomFace():
+    changePart(FACE, random.choice(list(faces.keys())))
+    changePart(EYEBROWS, random.choice(list(eyebrows.keys())))
+    changePart(NOSE, random.choice(list(noses.keys())))
+    changePart(EYES, random.choice(list(eyes.keys())))
+    changePart(MOUTH, random.choice(list(mouths.keys())))
+
 frame = ctk.CTkFrame(app, width=350, height=600)
 frame.pack(side="left", padx=10, pady=10)
 frame.pack_propagate(False)
@@ -160,14 +160,23 @@ ctk.CTkLabel(frame, text="Vali näoosad", **seaded).pack(pady=10)
 buttonFrame = ctk.CTkFrame(frame, width=300, height=400)
 buttonFrame.pack(pady=10)
 buttonFrame.pack_propagate(False)
-createButton(buttonFrame, "None", FACE).pack(pady=10, padx=10)
-createButton(buttonFrame, "None", EYEBROWS).pack(pady=10, padx=10)
-createButton(buttonFrame, "None", NOSE).pack(pady=10, padx=10)
-createButton(buttonFrame, "None", EYES).pack(pady=10, padx=10)
-createButton(buttonFrame, "None", MOUTH).pack(pady=10, padx=10)
+faceButton = createButton(buttonFrame, "None", FACE)
+faceButton.pack(pady=10, padx=10)
+eyebrowButton = createButton(buttonFrame, "None", EYEBROWS)
+eyebrowButton.pack(pady=10, padx=10)
+noseButton = createButton(buttonFrame, "None", NOSE)
+noseButton.pack(pady=10, padx=10)
+eyesButton = createButton(buttonFrame, "None", EYES)
+eyesButton.pack(pady=10, padx=10)
+mouthButton = createButton(buttonFrame, "None", MOUTH)
+mouthButton.pack(pady=10, padx=10)
 
-ctk.CTkButton(frame, text="Salvesta Pilt", command=lambda: saveFace(), **seaded).pack(pady=10)
+bottomFrame = ctk.CTkFrame(frame, width=300)
+bottomFrame.pack(pady=10)
+bottomFrame.pack_propagate(False)
+ctk.CTkButton(bottomFrame, text="Salvesta", command=lambda: saveFace(), **seaded).pack(padx=5, side="left")
+ctk.CTkButton(bottomFrame, text="Juhuslik", command=lambda: randomFace(), **seaded).pack(padx=5, side="left")
 
-changePart(FACE, "klouni_nägu")
+loadAssets()
 
 app.mainloop()
