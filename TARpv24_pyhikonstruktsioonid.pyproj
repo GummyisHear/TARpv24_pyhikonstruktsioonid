@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>666e8a8c-bd6a-4572-92a7-8e220588f5a4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>fotorobot\fotorobot.py</StartupFile>
+    <StartupFile>database\database.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,8 @@
     <Compile Include="10praktilised.py" />
     <Compile Include="arvestustoo.py" />
     <Compile Include="collatz.py" />
+    <Compile Include="database\database.py" />
+    <Compile Include="database\dbModule.py" />
     <Compile Include="donut.py" />
     <Compile Include="epostForm.py" />
     <Compile Include="failid.py" />
@@ -116,6 +118,8 @@
     <Content Include="fotorobot\gimp\vomiteyes.xcf" />
     <Content Include="klass.json" />
     <Content Include="kusimustik\kusimused.json" />
+    <Content Include="plokkskeemid\ulesanne10.png" />
+    <Content Include="plokkskeemid\ulesanne9.png" />
     <Content Include="riigid_pealinnad.txt" />
     <Content Include="sonastik.txt" />
     <Content Include="icon.ico" />
@@ -131,6 +135,9 @@
     <Folder Include="fotorobot\todo\" />
     <Folder Include="kusimustik\" />
     <Folder Include="matplotlib\" />
+    <Folder Include="NewFolder1\" />
+    <Folder Include="database\" />
+    <Folder Include="plokkskeemid\" />
     <Folder Include="wordleGui\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
