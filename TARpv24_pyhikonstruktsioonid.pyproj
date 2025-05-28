@@ -27,6 +27,8 @@
     <Compile Include="collatz.py" />
     <Compile Include="database\database.py" />
     <Compile Include="database\dbModule.py" />
+    <Compile Include="database\languages.py" />
+    <Compile Include="database\movies.py" />
     <Compile Include="donut.py" />
     <Compile Include="epostForm.py" />
     <Compile Include="failid.py" />

@@ -1,5 +1,64 @@
 from sqlite3 import *
 
+tablesSql = """
+-- Keeled
+CREATE TABLE IF NOT EXISTS languages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL
+);
+
+-- Riigid
+CREATE TABLE IF NOT EXISTS countries (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL
+);
+
+-- Žanrid
+CREATE TABLE IF NOT EXISTS genres (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL
+);
+
+-- Režissöörid
+CREATE TABLE IF NOT EXISTS directors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL
+);
+
+-- Filmid (viidete kaudu seotud ülejäänud tabelitega)
+CREATE TABLE IF NOT EXISTS movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  director_id INTEGER,
+  release_year INTEGER,
+  genre_id INTEGER,
+  duration INTEGER,
+  rating REAL,
+  language_id INTEGER,
+  country_id INTEGER,
+  description TEXT,
+  FOREIGN KEY (director_id) REFERENCES directors(id),
+  FOREIGN KEY (genre_id) REFERENCES genres(id),
+  FOREIGN KEY (language_id) REFERENCES languages(id),
+  FOREIGN KEY (country_id) REFERENCES countries(id)
+);
+"""
+
+def initDb():
+    try:
+        conn = connect('movies.db')
+        cursor = conn.cursor()
+
+        cursor.executescript(tablesSql)
+        createMoviesTable(cursor)
+
+        conn.commit()
+        conn.close()
+    except:
+        if (conn): 
+            conn.close()
+        raise Exception("Viga!")
+
 def createMoviesTable(cursor:Cursor):
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS movies (
