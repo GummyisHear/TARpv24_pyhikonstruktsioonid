@@ -1,7 +1,7 @@
 import sqlite3
 from dbModule import *
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import Toplevel, messagebox
 from tkinter import ttk
 
 entries = {}
@@ -28,7 +28,7 @@ def validateData()->bool:
 
     return True
 
-def insertData():
+def insertData(window):
     if not validateData():
         return
 
@@ -56,6 +56,7 @@ def insertData():
 
     messagebox.showinfo("Edu", "Andmed sisestati edukalt!")
     clearEntries()
+    window.destroy()
 
 def search(search:str)->list:
     if not search:
@@ -85,12 +86,10 @@ def loadTree(tree:ttk.Treeview):
     tree.column("country", width=80)
     tree.column("description", width=200)
 
-def updateWindow(root, itemId):
-    # Loo uus aken
+def updateWindow(root, itemId)->Toplevel:
     update_window = tk.Toplevel(root)
     update_window.title("Muuda filmi andmeid")
 
-    # Loo andmebaasi ühendus ja toomine olemasolevad andmed
     conn = sqlite3.connect('movies.db')
     cursor = conn.cursor()
     cursor.execute("SELECT title, director, release_year, genre, duration, rating, language, country, description FROM movies WHERE id=?", (itemId,))
@@ -102,17 +101,31 @@ def updateWindow(root, itemId):
 
     for i, label in enumerate(labels):
         tk.Label(update_window, text=label).grid(row=i, column=0, padx=10, pady=5, sticky=tk.W)
-        entry = tk.Entry(update_window, width=50)
-        entry.grid(row=i, column=1, padx=10, pady=5)
-        entry.insert(0, record[i])
-        entries[label] = entry
 
-    # Salvestamise nupp
+        if label in ["Režissöör", "Žanr", "Keel", "Riik"]:
+            table_map = {
+                "Režissöör": "directors",
+                "Žanr": "genres",
+                "Keel": "languages",
+                "Riik": "countries"
+            }
+            values = fetchValuesFromTable(table_map[label])
+            combo = ttk.Combobox(update_window, values=values, width=47)
+            combo.grid(row=i, column=1, padx=10, pady=5)
+            combo.set(record[i])  # pre-fill with current value
+            entries[label] = combo
+        else:
+            entry = tk.Entry(update_window, width=50)
+            entry.grid(row=i, column=1, padx=10, pady=5)
+            entry.insert(0, record[i])
+            entries[label] = entry
+
     save_button = tk.Button(update_window, text="Salvesta", command=lambda: updateRecord(itemId, entries, update_window))
     save_button.grid(row=len(labels), column=0, columnspan=2, pady=10)
+    return update_window
 
-def insertWindow():
-    root = tk.Tk()
+def insertWindow()->Toplevel:
+    root = tk.Toplevel()
     root.title("Filmi andmete sisestamine")
 
     labels = ["Pealkiri", "Režissöör", "Aasta", "Žanr", "Kestus", "Reiting", "Keel", "Riik", "Kirjeldus"]
@@ -121,16 +134,26 @@ def insertWindow():
 
     for i, label in enumerate(labels):
         tk.Label(root, text=label).grid(row=i, column=0, padx=10, pady=5)
-        entry = tk.Entry(root, width=40)
-        entry.grid(row=i, column=1, padx=10, pady=5)
-        entries[label] = entry
 
-    # Loo nupp andmete sisestamiseks
-    submit_button = tk.Button(root, text="Sisesta andmed", command=insertData)
+        if label in ["Režissöör", "Žanr", "Keel", "Riik"]:
+            table_map = {
+                "Režissöör": "directors",
+                "Žanr": "genres",
+                "Keel": "languages",
+                "Riik": "countries"
+            }
+            values = fetchValuesFromTable(table_map[label])
+            combo = ttk.Combobox(root, values=values, width=37)
+            combo.grid(row=i, column=1, padx=10, pady=5)
+            entries[label] = combo
+        else:
+            entry = tk.Entry(root, width=40)
+            entry.grid(row=i, column=1, padx=10, pady=5)
+            entries[label] = entry
+
+    submit_button = tk.Button(root, text="Sisesta andmed", command=lambda: insertData(root))
     submit_button.grid(row=len(labels), column=0, columnspan=2, pady=20)
-
-    # Näita Tkinteri akent
-    root.mainloop()
+    return root
 
 def updateRecord(itemId, entries, window):
     title = entries["Pealkiri"].get()
@@ -153,6 +176,13 @@ def updateRecord(itemId, entries, window):
     conn.commit()
     conn.close()
 
-    updateTree()
     window.destroy()
     messagebox.showinfo("Salvestamine", "Andmed on edukalt uuendatud!")
+
+def fetchValuesFromTable(table: str) -> list:
+    conn = sqlite3.connect("movies.db")
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT name FROM {table}")
+    values = [row[0] for row in cursor.fetchall()]
+    conn.close()
+    return values

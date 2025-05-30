@@ -5,6 +5,9 @@ from tkinter import messagebox
 from tkinter import ttk
 import movies
 import languages
+import countries
+import genres
+import directors
 
 currentTable = "movies"
 
@@ -17,10 +20,16 @@ except sqlite3.Error as error:
 
 def onInsert():
     if (currentTable == "languages"):
-        languages.insertWindow(root, conn)
+        languages.insertWindow(root, conn).wait_window()
+    if (currentTable == "countries"):
+        countries.insertWindow(root, conn).wait_window()
+    if (currentTable == "genres"):
+        genres.insertWindow(root, conn).wait_window()
     if (currentTable == "movies"):
-        movies.insertWindow()
-    # code does not stop in toplevel windows, need to listen for event close
+        movies.insertWindow().wait_window()
+    if (currentTable == "directors"):
+        directors.insertWindow(root, conn).wait_window()
+
     updateTree()
 
 def onSearch():
@@ -52,25 +61,17 @@ def onUpdate():
 
     itemId = selected_item[0]
     if (currentTable == "movies"):
-        movies.updateWindow(root, itemId)
+        movies.updateWindow(root, itemId).wait_window()
     if (currentTable == "languages"):
-        languages.updateWindow(root, itemId)
+        languages.updateWindow(root, itemId).wait_window()
+    if (currentTable == "countries"):
+        countries.updateWindow(root, itemId).wait_window()
+    if (currentTable == "genres"):
+        genres.updateWindow(root, itemId).wait_window()
+    if (currentTable == "directors"):
+        directors.updateWindow(root, itemId).wait_window()
+
     updateTree()
-
-def lisa_Keel():
-    def salvesta():
-        keel = entry_keel.get()
-        if keel:
-            cursor.execute("INSERT OR IGNORE INTO languages (name) VALUES (?)", (keel,))
-            conn.commit()
-            top.destroy()
-
-    top = tk.Toplevel(root)
-    top.title("Lisa keel")
-    tk.Label(top, text="Keel:").pack(pady=5)
-    entry_keel = tk.Entry(top)
-    entry_keel.pack(pady=5)
-    tk.Button(top, text="Salvesta", command=salvesta).pack(pady=10)
 
 search = ""
 def updateTree():
@@ -79,6 +80,12 @@ def updateTree():
         rows = movies.search(search)
     elif (currentTable == "languages"):
         rows = languages.search(search)
+    elif (currentTable == "countries"):
+        rows = countries.search(search)
+    elif (currentTable == "genres"):
+        rows = genres.search(search)
+    elif (currentTable == "directors"):
+        rows = directors.search(search)
 
     for item in tree.get_children():
         tree.delete(item)
@@ -96,9 +103,21 @@ def switchTable(tableName:str):
         currentTable = "languages"
         languages.loadTree(tree)
 
+    if (tableName == "countries"):
+        currentTable = "countries"
+        countries.loadTree(tree)
+
+    if (tableName == "genres"):
+        currentTable = "genres"
+        genres.loadTree(tree)
+
     if (tableName == "movies"):
         currentTable = "movies"
         movies.loadTree(tree)
+
+    if (tableName == "directors"):
+        currentTable = "directors"
+        directors.loadTree(tree)
 
     updateTree()
 
@@ -113,11 +132,11 @@ rowFrame.pack(pady=10, fill=tk.X)
 buttonFrame = tk.Frame(rowFrame)
 buttonFrame.pack(pady=10, side=tk.RIGHT, anchor="e")
 
-button = tk.Button(buttonFrame, text="Lisa uus film", command=onInsert)
+button = tk.Button(buttonFrame, text="Lisa uus", command=onInsert)
 button.pack(side="left", padx=10)
-button = tk.Button(buttonFrame, text="Kustuta film", command=onDelete)
+button = tk.Button(buttonFrame, text="Kustuta", command=onDelete)
 button.pack(side="left", padx=10)
-button = tk.Button(buttonFrame, text="Muuda film", command=onUpdate)
+button = tk.Button(buttonFrame, text="Muuda", command=onUpdate)
 button.pack(side="left", padx=10)
 
 # Lisa otsingukast
