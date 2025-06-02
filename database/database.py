@@ -19,7 +19,7 @@ except sqlite3.Error as error:
     print("Tekkis viga andmebaasiga ühendamisel:", error)
 
 def onInsert():
-    if (currentTable == "languages"):
+    if (currentTable == "languages"):   
         languages.insertWindow(root, conn).wait_window()
     if (currentTable == "countries"):
         countries.insertWindow(root, conn).wait_window()
@@ -143,7 +143,7 @@ button.pack(side="left", padx=10)
 search_frame = tk.Frame(rowFrame)
 search_frame.pack(pady=10, padx=10, side=tk.LEFT, anchor="w")
 
-search_label = tk.Label(search_frame, text="Otsi filmi pealkirja järgi:")
+search_label = tk.Label(search_frame, text="Otsing:")
 search_label.pack(side=tk.LEFT)
 
 search_entry = tk.Entry(search_frame)

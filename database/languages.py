@@ -24,7 +24,7 @@ def insertWindow(root, conn)->Toplevel:
     top.title("Lisa keel")
     tk.Label(top, text="Keel:").pack(pady=10, padx=10)
     entry_keel = tk.Entry(top)
-    entry_keel.pack(pady=5)
+    entry_keel.pack(pady=10, padx=10)
     tk.Button(top, text="Salvesta", command=salvesta).pack(pady=10)
     return top
 
