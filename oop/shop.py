@@ -9,7 +9,7 @@ class Product:
         self.id = id
 
     def __eq__(self, other):
-        return isinstance(other, Product) and other.id == self.id)
+        return isinstance(other, Product) and other.id == self.id
 
 class Shop:
     def __init__(self, name):
