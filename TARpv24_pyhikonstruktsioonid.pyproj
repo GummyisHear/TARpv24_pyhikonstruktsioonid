@@ -49,6 +49,7 @@
     <Compile Include="matemaatika.py" />
     <Compile Include="matplotlib\graafik.py" />
     <Compile Include="ModuleRegister.py" />
+    <Compile Include="oop\shop.py" />
     <Compile Include="palgad.py" />
     <Compile Include="palgadModule.py" />
     <Compile Include="plokkskeemid.py" />
@@ -142,6 +143,7 @@
     <Folder Include="matplotlib\" />
     <Folder Include="NewFolder1\" />
     <Folder Include="database\" />
+    <Folder Include="oop\" />
     <Folder Include="plokkskeemid\" />
     <Folder Include="wordleGui\" />
   </ItemGroup>
